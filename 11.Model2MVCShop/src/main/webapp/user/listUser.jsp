@@ -79,8 +79,10 @@
 			 
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(  "td:nth-child(5) > i" ).on("click" , function() {
+			//	$(  "#searchbutton" ).on("click" , function() {
 
 					var userId = $(this).next().val();
+				//	var userId = $("#searchKeyword").val();
 				
 					$.ajax( 
 							{
@@ -158,7 +160,7 @@
 				    			 value="${! empty search.searchKeyword ? search.searchKeyword : '' }"  >
 				  </div>
 				  
-				  <button type="button" class="btn btn-default">검색</button>
+				  <button type="button" class="btn btn-default" id="searchbutton">검색</button>
 				  
 				  <!-- PageNavigation 선택 페이지 값을 보내는 부분 -->
 				  <input type="hidden" id="currentPage" name="currentPage" value=""/>
