@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
+import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductDao;
 
 @Repository("productDaoImpl")
@@ -45,5 +46,9 @@ public class ProductDaoImpl implements ProductDao{
 	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("ProductMapper.getTotalCount", search);
+	}
+	//autocomplete
+	public List<Product> getList(Search search) throws Exception {
+		return sqlSession.selectList("ProductMapper.getList", search);
 	}
 }

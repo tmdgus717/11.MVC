@@ -116,7 +116,34 @@
 			
 			//==> 아래와 같이 정의한 이유는 ??
 			$(".ct_list_pop:nth-child(4n+6)" ).css("background-color" , "whitesmoke");
-		});	
+				
+				$( "#searchKeyword" ).autocomplete({
+				
+				source : function(request,response){
+					 $.ajax({
+						 	url: "/user/json/getList",
+						 	method: "POST",
+
+		                    dataType: "json",
+		                    headers : {
+								"Accept" : "application/json",
+								"Content-Type" : "application/json"
+							},
+		                    //request.term = $("#autocomplete").val() , $( "#autocompletesk" ).val()
+		                    data: JSON.stringify({ "searchKeyword" : $( "#searchKeyword" ).val(),
+		                    		"searchCondition" : 	$("#searchCondition").val()
+		                    		}),
+		                    success: function(data) {
+		                    	response(data)
+		                     
+		                    }
+		               });
+		            },
+				minLength: 2
+		       
+				});
+				
+	});	
 	
 	</script>
 	
@@ -148,7 +175,7 @@
 			    <form class="form-inline" name="detailForm">
 			    
 				  <div class="form-group">
-				    <select class="form-control" name="searchCondition" >
+				    <select class="form-control" name="searchCondition"  id="searchCondition">
 						<option value="0"  ${ ! empty search.searchCondition && search.searchCondition==0 ? "selected" : "" }>회원ID</option>
 						<option value="1"  ${ ! empty search.searchCondition && search.searchCondition==1 ? "selected" : "" }>회원명</option>
 					</select>

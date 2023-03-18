@@ -20,14 +20,9 @@
             margin-top: 10px;
         }
     </style>
-<title>상품등록</title>
+
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
-
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="../javascript/calendar.js">
-</script>
-
 <script type="text/javascript">
 
 function fncAddProduct(){
@@ -77,24 +72,11 @@ $(function(){
 	});
 });
 
-$(function(){
-	$("#manuDate").datepicker({
-		  format: "yyyy-m",
-	        minViewMode: 1,
-	        language: "ko",
-	        autoclose: true
-    })
-    $("#manuDate").on('click', function (e) {
-    	const dateArr = $('#manuDate').val().split('-')
-        location.href = '/history?year=' + dateArr[0] + '&month=' + dateArr[1]
-
-    });
-});
 
 
 
 </script>
-
+<title>상품등록</title>
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
@@ -127,21 +109,22 @@ $(function(){
 		    </div>
 	</div>
 	
-	 <div class="form-group">
-	 <label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
-	 	<div class="col-sm-4">
-	 		<input type="text" id="manuDate" class="form-control" value="2019-06-27" />
-	 	</div>
-	 </div>
-	 
+
+	
 	 <div class="form-group">
 		    <label for="price"" class="col-sm-offset-1 col-sm-3 control-label">가격</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="price"" name="price" placeholder="가격">
+		      <input type="text" class="form-control" id="price" name="price" placeholder="가격">
 		    </div>
 	 </div>
 		  
-
+	 <div class="form-group">
+		    <label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
+		    <div class="col-sm-4">
+		      <input type="text" id="datePicker" class="form-control" value="2019-06-27">
+		    </div>
+	 </div>
+	 
 	<div class="form-group">
 		    <label for="fileName"" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    <div class="col-sm-4">
@@ -156,6 +139,8 @@ $(function(){
 			  <button type="button" class="btn btn-primary" id="cc" >취&nbsp;소</button>
 		    </div>
 	</div>
+	
+
 </form>
 </div>
 </body>

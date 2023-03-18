@@ -95,5 +95,10 @@
 							</where>
 						</if> ) countTable						
 	 </select>
-	 
+	 <select id="getList" parameterType="search" resultMap="productSelectMap">
+	 	SELECT
+		*	
+		FROM product 
+		WHERE prod_name like #{searchKeyword}||'%'
+	 </select>
 </mapper>

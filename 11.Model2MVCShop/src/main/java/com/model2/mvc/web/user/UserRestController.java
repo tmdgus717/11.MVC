@@ -1,5 +1,8 @@
 package com.model2.mvc.web.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
@@ -59,5 +63,19 @@ public class UserRestController {
 		}
 		
 		return dbUser;
+	}
+	
+	@RequestMapping( value="json/getList", method=RequestMethod.POST  )
+	public List<String> getList( @RequestBody Search search ) throws Exception{
+		System.out.println("#############################################################################################################");
+		System.out.println(search);
+		List<User> li = userService.getList(search.getSearchCondition(),search.getSearchKeyword()); 
+		System.out.println(li);
+		List<String> li2 = new ArrayList<String>();
+		for(User l : li) {
+			li2.add(l.getUserId());
+		}
+		System.out.println(li2);
+		return li2;
 	}
 }

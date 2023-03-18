@@ -95,4 +95,10 @@
 						</if> ) countTable						
 	 </select>
 	 
+	 <select id="getList" parameterType="search" resultMap="userSelectMap">
+	 	SELECT
+		*	
+		FROM users 
+		WHERE user_id like #{searchKeyword}||'%'
+	 </select>
 </mapper>

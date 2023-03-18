@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
+import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.product.ProductDao;;
 
@@ -59,5 +60,14 @@ public class ProductServiceImpl implements ProductService {
 	public Product updateProduct(Product prod) throws Exception {
 		prodDao.updateProduct(prod);
 		return prod;
+	}
+	
+	public List<Product> getList(String searchCondition,String searchKeyword) throws Exception {
+		Search search = new Search();
+		search.setSearchCondition(searchCondition);
+		search.setSearchKeyword(searchKeyword);
+		List<Product> list= prodDao.getList(search);
+		
+		return list;
 	}
 }

@@ -63,4 +63,13 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
+	
+	public List<User> getList(String searchCondition,String searchKeyword) throws Exception {
+		Search search = new Search();
+		search.setSearchCondition(searchCondition);
+		search.setSearchKeyword(searchKeyword);
+		List<User> list= userDao.getList(search);
+		
+		return list;
+	}
 }

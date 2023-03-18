@@ -94,19 +94,7 @@ public class ProductController {
 		return "forward:/product/getProduct.jsp";
 	}
 	
-//	@RequestMapping("/updateProductView.do")
-//	public String updateProductView( @RequestParam("prodNo") String prodNo,
-//																@RequestParam("menu") String menu, Model model ) throws Exception{
-//
-//		System.out.println("/updateProductView.do");
-//	
-//		int prodNoInt = Integer.parseInt(prodNo);
-//		Product product = productService.getProduct(prodNoInt);
-//		
-//		model.addAttribute("product", product);
-//		
-//		return "forward:/product/updateProductView.jsp";
-//	}
+
 	@RequestMapping( value="updateProduct", method=RequestMethod.GET)//updatieView
 	public String updateProduct( @RequestParam("prodNo") int prodNo,
 																@RequestParam("menu") String menu, Model model ) throws Exception{

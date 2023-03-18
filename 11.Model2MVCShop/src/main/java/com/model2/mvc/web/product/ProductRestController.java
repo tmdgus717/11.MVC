@@ -1,5 +1,7 @@
 package com.model2.mvc.web.product;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,4 +49,17 @@ public class ProductRestController {
 		return productService.getProduct(Integer.parseInt(prodNo));
 	}
 	
+	@RequestMapping( value="json/getList", method=RequestMethod.POST  )
+	public List<String> getList( @RequestBody Search search ) throws Exception{
+		System.out.println("#############################################################################################################");
+		System.out.println(search);
+		List<Product> li = productService.getList(search.getSearchCondition(),search.getSearchKeyword()); 
+		System.out.println(li);
+		List<String> li2 = new ArrayList<String>();
+		for(Product l : li) {
+			li2.add(l.getProdName());
+		}
+		System.out.println(li2);
+		return li2;
+	}
 }//end ProductController class
